@@ -41,7 +41,7 @@ const Home: NextPage = () => {
               {/* Buttons  */}
               <button
                 className="bg-[#C3994A] text-white border-4 border-[#F5C364] hover:bg-[#F5C364]  rounded-lg w-[307px] mt-20  font-jetbrains-mono text-xl font-extrabold leading-normal p-4"
-                // onClick={() => setImage()}
+                onClick={() => router.push("/statusCat")}
               >
                 Upload Your Cat Story
               </button>
