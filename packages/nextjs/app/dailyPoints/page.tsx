@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -46,39 +46,19 @@ function DailyPoints() {
 
             <div className="bg-white col-span-3 border-8 border-[#FED595] rounded-md">
               <div className="flex items-center justify-center bg-[#F5F1F1] mb-4">
-                <Image
-                  src="/assets/feedtrophy.svg"
-                  width={40}
-                  height={40}
-                  alt="pet"
-                />
+                <Image src="/assets/feedtrophy.svg" width={40} height={40} alt="pet" />
                 <p className="font-semibold text-2xl text-black px-4 py-3">Daily Points</p>
               </div>
               <div className="flex items-center justify-center bg-[#F5F1F1] mb-4">
-                <Image
-                  src="/assets/calendar.svg"
-                  width={40}
-                  height={40}
-                  alt="pet"
-                />
+                <Image src="/assets/calendar.svg" width={40} height={40} alt="pet" />
                 <p className="font-semibold text-2xl text-black px-4 py-3">Daily Log in</p>
               </div>
               <div className="flex items-center justify-center bg-[#F5F1F1] mb-4">
-                <Image
-                  src="/assets/quiz.svg"
-                  width={40}
-                  height={40}
-                  alt="pet"
-                />
+                <Image src="/assets/quiz.svg" width={40} height={40} alt="pet" />
                 <p className="font-semibold text-2xl text-black px-4 py-3">Daily Quiz</p>
               </div>
               <div className="flex items-center justify-center bg-[#F5F1F1]">
-                <Image
-                  src="/assets/feedcat.svg"
-                  width={40}
-                  height={40}
-                  alt="pet"
-                />
+                <Image src="/assets/feedcat.svg" width={40} height={40} alt="pet" />
                 <p className="font-semibold text-2xl text-black px-4 py-3">Feed Cat</p>
               </div>
             </div>
