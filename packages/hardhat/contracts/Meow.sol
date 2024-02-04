@@ -13,6 +13,7 @@ contract Meow {
 
   mapping(address => uint) public ownerToPetID;
   mapping(address => uint) public ownerToAccessoryID;
+  mapping(address => string) public ownerToBackground;
 
   constructor(address token_address, address cats_address, address accessories_address) {
     xptoken = XPToken(token_address);
@@ -42,6 +43,14 @@ contract Meow {
     uint nft_id = accessoriesNFT.mint(msg.sender, token_URI);
     ownerToAccessoryID[msg.sender] = nft_id;
     xptoken.burn(msg.sender, 1000000000000000000);
+  }
+
+   /**
+    * Buy and set background
+    */
+  function setBackground(string memory backgroundURI) external {
+    ownerToBackground[msg.sender] = backgroundURI;
+    xptoken.burn(msg.sender, 100000000000000000000);
   }
 
 }

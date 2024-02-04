@@ -9,12 +9,6 @@ import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 import { useAccount } from "wagmi";
 import { formatEther } from "viem";
 
-const backgroundImageStyle = {
-  backgroundImage: 'url("/assets/background.jpg")',
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
-  height: "104vh", // Set to full height of the viewport
-};
 
 function StatusCat() {
   const router = useRouter();
@@ -26,8 +20,19 @@ function StatusCat() {
     args: [address],
   });
 
+  const { data: background } = useScaffoldContractRead({
+    contractName: "Meow",
+    functionName: "ownerToBackground",
+    args: [address],
+  });
+
   return (
-    <div style={backgroundImageStyle}>
+    <div style={{
+      backgroundImage: `url(${background || "/assets/background.jpg"})`,
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      height: "104vh", // Set to full height of the viewport
+    }}>
       <p className="text-right mr-[100px] mt-10">Current Points: {formatEther(XPToken || 0)}</p>
       <div className="flex items-center justify-center">
         <div className=" mt-10">
@@ -64,7 +69,7 @@ function StatusCat() {
                 />
                 <p className="font-semibold text-2xl text-black px-4 py-3">Feed Cat</p>
               </div>
-              <div className="flex flex-col items-center justify-center bg-[#F5F1F1] cursor-pointer">
+              <div className="flex flex-col items-center justify-center bg-[#F5F1F1] cursor-pointer" onClick={() => router.push("/customize")}>
                 <Image
                   src="/assets/customize.svg"
                   width={40}
