@@ -8,10 +8,10 @@ contract XPToken is ERC20 {
   constructor() payable ERC20("XP Token", "XP") {}
 
   function mint(address account, uint amount) public {
-    _mint(account, amount * 10 ** 18);
+    _mint(account, amount);
   }
 
   function burn(address account, uint amount) public {
-    _burn(account, amount * 10 ** 18);
+    _burn(account, amount);
   }
 }

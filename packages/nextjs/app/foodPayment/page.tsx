@@ -7,6 +7,7 @@ import { useWalletClient, useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
 import { ImPlus } from "react-icons/im";
 import { ImMinus } from "react-icons/im";
+import { parseEther } from "viem";
 
 import { BsHeartFill } from "react-icons/bs";
 
@@ -31,7 +32,7 @@ function FoodPayment() {
   const [price, setPrice] = useState(0.99);
   const { data: walletClient } = useWalletClient();
   const { data: yourContract } = useScaffoldContract({
-    contractName: "Petfeedme",
+    contractName: "Meow",
     walletClient,
   });
 
@@ -42,7 +43,7 @@ function FoodPayment() {
   const closePopup = () => {
     console.log("🚀 ~ file: foodPayment.tsx:44 ~ closePopup ~ closePopup:", closePopup);
     setPopupOpen(false);
-    router.push("/fundraiserDetails");
+    router.push("/statusCat");
   };
 
   const calculateTotal = () => {
@@ -73,7 +74,7 @@ function FoodPayment() {
   };
 
   const feedPet = async () => {
-    const transaction = await yourContract?.write.feedPetanddonate(["0", price * 100, calories]);
+    const transaction = await yourContract?.write.earnXP([parseEther('100') ]);
     setTransaction(transaction);
     openPopup();
   };

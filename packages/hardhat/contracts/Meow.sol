@@ -31,8 +31,8 @@ contract Meow {
   /**
     * Earn XP
     */
-  function earnXP() external {
-   xptoken.mint(msg.sender, 1000000000000000000);
+  function earnXP(uint amount) external {
+   xptoken.mint(msg.sender, amount);
   }
 
    /**

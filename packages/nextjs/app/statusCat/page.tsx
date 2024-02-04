@@ -55,7 +55,7 @@ function StatusCat() {
                 />
                 <p className="font-semibold text-2xl text-black px-4 py-3">Daily Points</p>
               </div>
-              <div className="flex flex-col items-center justify-center bg-[#F5F1F1] cursor-pointer">
+              <div className="flex flex-col items-center justify-center bg-[#F5F1F1] cursor-pointer" onClick={() => router.push("/selectFood")}>
                 <Image
                   src="/assets/fish.svg"
                   width={40}
