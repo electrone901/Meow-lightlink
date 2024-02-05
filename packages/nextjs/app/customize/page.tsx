@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -49,15 +49,17 @@ function Customize() {
         <div className="w-[800px]">
           <p className="text-right mt-10">Current Points: {formatEther(XPToken || 0)}</p>
           <div className=" mt-10">
-            
-            <h1>Background</h1>
-            <p className="text-center">Preview</p>
+            <h1 className="text-3xl font-semibold">Select A Background</h1>
+            <p className="text-xl font-bold">Preview</p>
             <div className="grid grid-cols-3 gap-10">
-              <div className="grid col-span-2 grid-cols-2 gap-1" style={{
-                backgroundImage: `url(${imageURLs[selected]})`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-              }}>
+              <div
+                className="grid col-span-2 grid-cols-2 gap-1 border border-blue-500 p-6"
+                style={{
+                  backgroundImage: `url(${imageURLs[selected]})`,
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
                 <div className="flex flex-col items-center justify-center">
                   <p className="font-semibold text-2xl text-white px-2 py-2">MOMOTO</p>
                   <Image
@@ -71,43 +73,19 @@ function Customize() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col items-center w-[100px] justify-center bg-[#F5F1F1] cursor-pointer">
-                    <Image
-                      className="mt-4"
-                      src="/assets/feedtrophy.svg"
-                      width={30}
-                      height={30}
-                      alt="pet"
-                    />
+                    <Image className="mt-4" src="/assets/feedtrophy.svg" width={30} height={30} alt="pet" />
                     <p className="font-semibold text-[10px] text-black ">Daily Points</p>
                   </div>
                   <div className="flex flex-col items-center w-[100px] justify-center bg-[#F5F1F1] cursor-pointer">
-                    <Image
-                      className="mt-4"
-                      src="/assets/fish.svg"
-                      width={30}
-                      height={30}
-                      alt="pet"
-                    />
+                    <Image className="mt-4" src="/assets/fish.svg" width={30} height={30} alt="pet" />
                     <p className="font-semibold text-[10px] text-black ">Feed Cat</p>
                   </div>
                   <div className="flex flex-col items-center w-[100px] justify-center bg-[#F5F1F1] cursor-pointer">
-                    <Image
-                      className="mt-4"
-                      src="/assets/customize.svg"
-                      width={30}
-                      height={30}
-                      alt="pet"
-                    />
+                    <Image className="mt-4" src="/assets/customize.svg" width={30} height={30} alt="pet" />
                     <p className="font-semibold text-[10px] text-black ">Customize</p>
                   </div>
                   <div className="flex flex-col items-center w-[100px] justify-center bg-[#F5F1F1] cursor-pointer">
-                    <Image
-                      className="mt-4"
-                      src="/assets/marketplace.svg"
-                      width={30}
-                      height={30}
-                      alt="pet"
-                    />
+                    <Image className="mt-4" src="/assets/marketplace.svg" width={30} height={30} alt="pet" />
                     <p className="font-semibold text-[10px] text-black ">Market Place</p>
                   </div>
                 </div>
@@ -115,18 +93,23 @@ function Customize() {
               <div className="">
                 <div className="flex items-center mt-[50px]">
                   <Image
-                    className="rounded-full"
+                    className="rounded-full border border-blue-500"
                     src={imageURLs[selected]}
                     width={180}
                     height={100}
                     alt="Background"
                   />
-                  <FiChevronRight className="ml-10 cursor-pointer text-[20px]" onClick={() => {
-                    if(selected === 3) setSelected(0);
-                    else setSelected(selected + 1);
-                  }} />
+                  <div className="text-4xl font-bold">
+                    <FiChevronRight
+                      className="ml-10 cursor-pointer "
+                      onClick={() => {
+                        if (selected === 3) setSelected(0);
+                        else setSelected(selected + 1);
+                      }}
+                    />
+                  </div>
                 </div>
-                <p className="ml-10 text-[20px] font-semibold">100 Points</p>
+                <p className="ml-10 text-[21px] font-semibold">100 Points</p>
               </div>
             </div>
 
