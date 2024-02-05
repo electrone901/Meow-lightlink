@@ -1,13 +1,14 @@
-"use client";
+'use client';
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { HiArrowDownCircle } from "react-icons/hi2";
-import { BsHeartFill } from "react-icons/bs";
+import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 import { useAccount } from "wagmi";
 import { formatEther } from "viem";
+import { DailyLogIn } from "./_components/DailyLogIn";
+import { DailyQuiz } from "./_components/DailyQuiz";
 
 const backgroundImageStyle = {
   backgroundImage: 'url("/assets/background.jpg")',
@@ -19,6 +20,8 @@ const backgroundImageStyle = {
 function DailyPoints() {
   const router = useRouter();
   const { address } = useAccount();
+  const [showDailyLogin, setShowDailyLogin] = useState(false);
+  const [showDailyQuiz, setShowDailyQuiz] = useState(false);
 
   const { data: XPToken } = useScaffoldContractRead({
     contractName: "XPToken",
@@ -33,8 +36,8 @@ function DailyPoints() {
         <div className=" mt-10">
           <p className="font-semibold text-3xl text-black px-2 py-2">Check MOMOTO’s status</p>
 
-          <div className="grid grid-cols-5 gap-10">
-            <div className=" p-4 col-span-2 flex items-center justify-center">
+          <div className="grid grid-cols-2 gap-10 w-[1000px]">
+            <div className=" p-4 flex items-center justify-center">
               <Image
                 src="/assets/cat 001.png"
                 width={1900}
@@ -44,21 +47,55 @@ function DailyPoints() {
               />
             </div>
 
-            <div className="bg-white col-span-3 border-8 border-[#FED595] rounded-md">
+            <div className="bg-white border-8 border-[#FED595] rounded-md">
               <div className="flex items-center justify-center bg-[#F5F1F1] mb-4">
-                <Image src="/assets/feedtrophy.svg" width={40} height={40} alt="pet" />
+                <Image
+                  src="/assets/feedtrophy.svg"
+                  width={40}
+                  height={40}
+                  alt="pet"
+                />
                 <p className="font-semibold text-2xl text-black px-4 py-3">Daily Points</p>
               </div>
-              <div className="flex items-center justify-center bg-[#F5F1F1] mb-4">
-                <Image src="/assets/calendar.svg" width={40} height={40} alt="pet" />
-                <p className="font-semibold text-2xl text-black px-4 py-3">Daily Log in</p>
+              <div className="flex flex-col items-center justify-center bg-[#F5F1F1] mb-4">
+                <div className="flex items-center">
+                  <Image
+                    src="/assets/calendar.svg"
+                    width={40}
+                    height={40}
+                    alt="pet"
+                  />
+                  <p className="font-semibold text-2xl text-black px-4 py-3">Daily Log in</p>
+                  {showDailyLogin 
+                    ? <FiChevronUp className="cursor-pointer" style={{ fontSize: "30px"}} onClick={() => setShowDailyLogin(false)} />
+                    : <FiChevronDown className="cursor-pointer" style={{ fontSize: "30px"}} onClick={() => setShowDailyLogin(true)} />
+                  }
+                </div>
+                {showDailyLogin && <DailyLogIn />}
               </div>
-              <div className="flex items-center justify-center bg-[#F5F1F1] mb-4">
-                <Image src="/assets/quiz.svg" width={40} height={40} alt="pet" />
-                <p className="font-semibold text-2xl text-black px-4 py-3">Daily Quiz</p>
+              <div className="flex flex-col items-center justify-center bg-[#F5F1F1] mb-4">
+                <div className="flex items-center">
+                  <Image
+                    src="/assets/quiz.svg"
+                    width={40}
+                    height={40}
+                    alt="pet"
+                  />
+                 <p className="font-semibold text-2xl text-black px-4 py-3">Daily Quiz</p>
+                  {showDailyQuiz 
+                    ? <FiChevronUp className="cursor-pointer" style={{ fontSize: "30px"}} onClick={() => setShowDailyQuiz(false)} />
+                    : <FiChevronDown className="cursor-pointer" style={{ fontSize: "30px"}} onClick={() => setShowDailyQuiz(true)} />
+                  }
+                </div>
+                {showDailyQuiz && <DailyQuiz />}
               </div>
               <div className="flex items-center justify-center bg-[#F5F1F1]">
-                <Image src="/assets/feedcat.svg" width={40} height={40} alt="pet" />
+                <Image
+                  src="/assets/feedcat.svg"
+                  width={40}
+                  height={40}
+                  alt="pet"
+                />
                 <p className="font-semibold text-2xl text-black px-4 py-3">Feed Cat</p>
               </div>
             </div>
